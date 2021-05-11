@@ -2,11 +2,15 @@ import styled, { css } from "styled-components";
 import Form from "./components/form";
 import { ReactComponent as Planet } from "./icons/planet.svg";
 import BackgroundImage from "./images/login-background.png";
+import Header from "./components/header"
 
 function Login() {
   return (
     <>
       <Container side="left" backgroundImage={BackgroundImage}>
+        <HeaderWrapper>
+          <Header/>
+        </HeaderWrapper>
         <ItemsWrapper>
           <PlanetWrapper>
             <Planet className="planet-animation" />
@@ -63,6 +67,12 @@ const ItemsWrapper = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
 `;
+
+const HeaderWrapper = styled.div`
+  position: absolute;
+  top: 2%;
+  left: 2%;
+`
 
 const PlanetWrapper = styled.div`
   .planet-animation {
