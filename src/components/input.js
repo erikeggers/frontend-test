@@ -1,22 +1,23 @@
-import React from 'react';
 import styled from 'styled-components';
 
-const Input = ({name, type}) => {
+const Input = ({name, type, className}) => {
  return (
-  <>
+  <div className={className}>
     <StyledLabel for={name}>{name}</StyledLabel>
     <StyledInput type={type} id={name}/>
-  </>
+  </div>
  )
 };
  
 const StyledLabel = styled.label`
+  font-size: 12px;
   display: block;
   text-transform: uppercase;
-  margin-bottom: 40px;
+  margin-bottom: 13px;
 `
 
 const StyledInput = styled.input`
+  font-size: 20px;
   width: 100%;
   border: 0;
   outline: 0;
