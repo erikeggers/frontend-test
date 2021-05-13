@@ -1,9 +1,12 @@
 import styled from "styled-components";
 
 const Link = ({ whereTo, text, color, noUnderline }) => {
-  console.log(noUnderline);
   return (
-    <StyledLink href={whereTo} color={color} noUnderline={noUnderline}>
+    <StyledLink
+      href={whereTo}
+      color={color}
+      noUnderline={noUnderline}
+    >
       {text}
     </StyledLink>
   );
