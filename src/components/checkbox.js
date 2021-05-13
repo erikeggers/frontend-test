@@ -4,7 +4,7 @@ const Checkbox = ({type, text}) => {
  return (
   <Wrapper>
     <input type="checkbox" id={type} name={type} value={type}/>
-    <StyledLabel for={type}> {text}</StyledLabel>
+    <StyledLabel htmlFor={type}> {text}</StyledLabel>
   </Wrapper>
  )
 };

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const Input = ({name, type, className}) => {
  return (
   <div className={className}>
-    <StyledLabel for={name}>{name}</StyledLabel>
+    <StyledLabel htmlFor={name}>{name}</StyledLabel>
     <StyledInput type={type} id={name}/>
   </div>
  )

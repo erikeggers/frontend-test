@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import Input from "./input";
-import Button from "./button";
-import Checkbox from "./checkbox";
-import Link from "./link";
+import Input from "../components/input";
+import Button from "../components/button";
+import Checkbox from "../components/checkbox";
+import Link from "../components/link";
 
 const Form = () => {
   return (
-    <Wrapper>
+    <>
       <FormHeader>Log in</FormHeader>
       <StyledForm>
         <Input name="Email Address" type="email" className="form-input-email" />
@@ -28,15 +28,12 @@ const Form = () => {
           <Link whereTo="#" text="Sign Up Here" />
         </SignUpWrapper>
       </StyledForm>
-    </Wrapper>
+    </>
   );
 };
 
-const Wrapper = styled.div`
-  width: 100%;
-`;
-
 const StyledForm = styled.form`
+  margin: 0 auto;
   max-width: 400px;
   min-width: 400px;
   .form-input-email {

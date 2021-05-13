@@ -1,58 +1,43 @@
 import styled, { css } from "styled-components";
-import { useMediaQuery } from "react-responsive";
-import Form from "../components/form";
+import Form from "../modules/form";
 import { ReactComponent as Planet } from "../icons/planet.svg";
 import BackgroundImage from "../images/login-background.png";
-import Header from "../components/header";
 
-// const isTablet = useMediaQuery({ query: '(max-width: 1224px)' })
-
-const Login = () => {
-  // const isMobileDevice = useMediaQuery({
-  //   query: "(min-device-width: 480px)",
-  // });
-
-  // const isTabletDevice = useMediaQuery({
-  //   query: "(min-device-width: 768px)",
-  // });
-
-  const isDesktop = useMediaQuery({
-    query: "(min-device-width: 1024px)",
-  });
-
+const Login = ({ isTabletOrMobile }) => {
   return (
-    <>
-      {isDesktop && (
-        <>
-          <Container side="left" backgroundImage={BackgroundImage}>
-          <HeaderWrapper>
-            <Header />
-          </HeaderWrapper>
-            <ItemsWrapper>
-              <PlanetWrapper>
-                <Planet className="planet-animation" />
-              </PlanetWrapper>
-            </ItemsWrapper>
-          </Container>
-        </>
+    <Wrapper>
+      {!isTabletOrMobile && (
+        <SideContainer side="left" backgroundImage={BackgroundImage}>
+          <ItemsWrapper>
+            <PlanetWrapper>
+              <Planet className="planet-animation" />
+            </PlanetWrapper>
+          </ItemsWrapper>
+        </SideContainer>
       )}
-      <Container side="right">
-        <ItemsWrapper>
-          <Form />
+      <SideContainer side="right" isTabletOrMobile={isTabletOrMobile}>
+        <ItemsWrapper isTabletOrMobile={isTabletOrMobile}>
+          <Form isTabletOrMobile={isTabletOrMobile} />
         </ItemsWrapper>
-      </Container>
-    </>
+      </SideContainer>
+    </Wrapper>
   );
 };
 
-const Container = styled.div`
+const Wrapper = styled.div`
+  display: flex;
+  width: 100%;
   height: 100%;
+`;
+
+const SideContainer = styled.div`
   width: 50%;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  overflow-x: hidden;
-  border: none;
+  height: 100%;
+  ${({ isTabletOrMobile }) =>
+    isTabletOrMobile &&
+    css`
+      width: 100%;
+    `}
 
   ${({ backgroundImage }) =>
     backgroundImage &&
@@ -65,7 +50,7 @@ const Container = styled.div`
         position: absolute;
         content: "";
         height: 100%;
-        width: 100%;
+        width: 50%;
         top: 0;
         left: 0;
         background: linear-gradient(
@@ -75,22 +60,14 @@ const Container = styled.div`
         );
       }
     `}
-
-  ${(props) => (props.side === "left" ? "left: 0" : "right: 0;")};
-  ${(props) => (props.side === "right" ? "align-items: center" : null)};
 `;
 
 const ItemsWrapper = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-`;
-
-const HeaderWrapper = styled.div`
-  position: absolute;
-  top: 2%;
-  left: 2%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 
 const PlanetWrapper = styled.div`
