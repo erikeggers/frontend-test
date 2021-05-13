@@ -1,22 +1,41 @@
 import styled, { css } from "styled-components";
-import Form from "./components/form";
-import { ReactComponent as Planet } from "./icons/planet.svg";
-import BackgroundImage from "./images/login-background.png";
-import Header from "./components/header"
+import { useMediaQuery } from "react-responsive";
+import Form from "../components/form";
+import { ReactComponent as Planet } from "../icons/planet.svg";
+import BackgroundImage from "../images/login-background.png";
+import Header from "../components/header";
 
-function Login() {
+// const isTablet = useMediaQuery({ query: '(max-width: 1224px)' })
+
+const Login = () => {
+  // const isMobileDevice = useMediaQuery({
+  //   query: "(min-device-width: 480px)",
+  // });
+
+  // const isTabletDevice = useMediaQuery({
+  //   query: "(min-device-width: 768px)",
+  // });
+
+  const isDesktop = useMediaQuery({
+    query: "(min-device-width: 1024px)",
+  });
+
   return (
     <>
-      <Container side="left" backgroundImage={BackgroundImage}>
-        <HeaderWrapper>
-          <Header/>
-        </HeaderWrapper>
-        <ItemsWrapper>
-          <PlanetWrapper>
-            <Planet className="planet-animation" />
-          </PlanetWrapper>
-        </ItemsWrapper>
-      </Container>
+      {isDesktop && (
+        <>
+          <Container side="left" backgroundImage={BackgroundImage}>
+          <HeaderWrapper>
+            <Header />
+          </HeaderWrapper>
+            <ItemsWrapper>
+              <PlanetWrapper>
+                <Planet className="planet-animation" />
+              </PlanetWrapper>
+            </ItemsWrapper>
+          </Container>
+        </>
+      )}
       <Container side="right">
         <ItemsWrapper>
           <Form />
@@ -24,7 +43,7 @@ function Login() {
       </Container>
     </>
   );
-}
+};
 
 const Container = styled.div`
   height: 100%;
@@ -51,8 +70,8 @@ const Container = styled.div`
         left: 0;
         background: linear-gradient(
           to bottom,
-          rgba(81, 86, 148, 0.80) 0%,
-          rgba(16, 17, 37, 0.80) 100%
+          rgba(81, 86, 148, 0.8) 0%,
+          rgba(16, 17, 37, 0.8) 100%
         );
       }
     `}
@@ -72,7 +91,7 @@ const HeaderWrapper = styled.div`
   position: absolute;
   top: 2%;
   left: 2%;
-`
+`;
 
 const PlanetWrapper = styled.div`
   .planet-animation {
