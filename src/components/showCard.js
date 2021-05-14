@@ -38,12 +38,14 @@ const Image = styled.img`
 const ImagePlaceholder = styled.div`
   height: 188.5px;
   min-width: 123.14px;
+  max-width: 123.14px;
   border-radius: 5px;
   background-color: #999;
   color: #eee;
   text-align: center;
   font-size: 20px;
   padding: 20px;
+  word-wrap: break-word;
 `;
 
 const Text = styled.div`

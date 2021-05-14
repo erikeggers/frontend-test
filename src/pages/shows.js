@@ -24,25 +24,24 @@ const Shows = () => {
   };
 
   return (
-    <>
-      <ShowsContainer>
-        <form onSubmit={handleSubmit}>
-          <Input
-            type="text"
-            name="Search"
-            value={term}
-            onChange={(e) => setTerm(e.target.value)}
-          />
-        </form>
-        {isLoading ? (
-          <div>Loading shows...</div>
-        ) : (
-          shows && shows.map((show, i) => {
-            return <ShowCard key={i} show={show.show} />;
-          })
-        )}
-      </ShowsContainer>
-    </>
+    <ShowsContainer>
+      <form onSubmit={handleSubmit}>
+        <Input
+          type="text"
+          name="Search"
+          value={term}
+          onChange={(e) => setTerm(e.target.value)}
+        />
+      </form>
+      {isLoading ? (
+        <div>Loading shows...</div>
+      ) : (
+        shows &&
+        shows.map((show, i) => {
+          return <ShowCard key={i} show={show.show} />;
+        })
+      )}
+    </ShowsContainer>
   );
 };
 

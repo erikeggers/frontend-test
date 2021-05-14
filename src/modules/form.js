@@ -3,12 +3,17 @@ import Input from "../components/input";
 import Button from "../components/button";
 import Checkbox from "../components/checkbox";
 import Link from "../components/link";
+import { navigate } from "hookrouter";
 
 const Form = () => {
+  const handleSubmit = () => {
+    navigate('/shows');
+  };
+
   return (
     <>
       <FormHeader>Log in</FormHeader>
-      <StyledForm>
+      <StyledForm onSubmit={handleSubmit}>
         <Input name="Email Address" type="email" className="form-input-email" />
         <Input
           name="Password"
