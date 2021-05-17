@@ -7,28 +7,29 @@ import Footer from "./modules/footer";
 import { useRoutes } from "hookrouter";
 
 function App() {
-  // const isDesktopOrLaptop = useMediaQuery({
-  //   query: "(min-device-width: 1024px)",
-  // });
-  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
-  // const isTabletOrMobileDevice = useMediaQuery({
-  //   query: "(max-device-width: 1224px)",
-  // });
+  // Media Queries
+  const isTablet = useMediaQuery({ query: "(max-width: 1224px)" });
+  const isMobile = useMediaQuery({
+    query: "(max-width: 480px)",
+  });
+
+  // Routes
   const routes = {
-    "/": () => <Login isTabletOrMobile={isTabletOrMobile} />,
+    "/": () => <Login isTablet={isTablet} />,
     "/shows": () => <Shows />,
   };
 
-  console.log(window.location.pathname);
   const routeResults = useRoutes(routes);
 
   const pathName = window.location.pathname;
 
   return (
     <div className="App">
-      {pathName !== "/shows" && <Header isTabletOrMobile={isTabletOrMobile} />}
+      {pathName !== "/shows" && (
+        <Header isTablet={isTablet} isMobile={isMobile} />
+      )}
       {routeResults}
-      <Footer isTabletOrMobile={isTabletOrMobile} />
+      <Footer isMobile={isMobile} />
     </div>
   );
 }

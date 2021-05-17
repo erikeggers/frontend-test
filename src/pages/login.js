@@ -3,10 +3,10 @@ import Form from "../modules/form";
 import { ReactComponent as Planet } from "../icons/planet.svg";
 import BackgroundImage from "../images/login-background.png";
 
-const Login = ({ isTabletOrMobile }) => {
+const Login = ({ isTablet, isMobile }) => {
   return (
     <Wrapper>
-      {!isTabletOrMobile && (
+      {!isTablet && (
         <SideContainer side="left" backgroundImage={BackgroundImage}>
           <ItemsWrapper>
             <PlanetWrapper>
@@ -15,9 +15,9 @@ const Login = ({ isTabletOrMobile }) => {
           </ItemsWrapper>
         </SideContainer>
       )}
-      <SideContainer side="right" isTabletOrMobile={isTabletOrMobile}>
-        <ItemsWrapper isTabletOrMobile={isTabletOrMobile}>
-          <Form isTabletOrMobile={isTabletOrMobile} />
+      <SideContainer side="right" isTablet={isTablet}>
+        <ItemsWrapper isTablet={isTablet}>
+          <Form isTablet={isTablet} isMobile={isMobile} />
         </ItemsWrapper>
       </SideContainer>
     </Wrapper>
@@ -33,8 +33,8 @@ const Wrapper = styled.div`
 const SideContainer = styled.div`
   width: 50%;
   height: 100%;
-  ${({ isTabletOrMobile }) =>
-    isTabletOrMobile &&
+  ${({ isTablet }) =>
+    isTablet &&
     css`
       width: 100%;
     `}

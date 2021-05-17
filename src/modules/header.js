@@ -1,8 +1,8 @@
-import styled, {css} from "styled-components";
+import styled, { css } from "styled-components";
 
-const Header = ({isTabletOrMobile}) => {
+const Header = ({ isTablet, isMobile }) => {
   return (
-    <Wrapper isTabletOrMobile={isTabletOrMobile}>
+    <Wrapper isTablet={isTablet} isMobile={isMobile}>
       <a href="/">LOGO</a>
     </Wrapper>
   );
@@ -10,9 +10,9 @@ const Header = ({isTabletOrMobile}) => {
 
 const Wrapper = styled.header`
   position: absolute;
-  background-color: #1A1B35;
-  ${({ isTabletOrMobile }) =>
-    isTabletOrMobile
+  background-color: ${(props) => (props.isMobile ? "#222222" : "#1A1B35")};
+  ${({ isTablet }) =>
+    isTablet
       ? css`
           padding: 12px;
           height: 50px;

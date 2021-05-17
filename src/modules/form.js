@@ -5,15 +5,15 @@ import Checkbox from "../components/checkbox";
 import Link from "../components/link";
 import { navigate } from "hookrouter";
 
-const Form = () => {
+const Form = (isMobile) => {
   const handleSubmit = () => {
-    navigate('/shows');
+    navigate("/shows");
   };
 
   return (
     <>
       <FormHeader>Log in</FormHeader>
-      <StyledForm onSubmit={handleSubmit}>
+      <StyledForm onSubmit={() => handleSubmit()} isMobile={isMobile}>
         <Input name="Email Address" type="email" className="form-input-email" />
         <Input
           name="Password"
@@ -38,9 +38,9 @@ const Form = () => {
 };
 
 const StyledForm = styled.form`
-  margin: 0 auto;
   max-width: 400px;
-  min-width: 400px;
+  width: 100%;
+  padding: ${(props) => (props.isMobile ? "0 20px" : null)};
   .form-input-email {
     margin: 0 0 40px 0;
   }
