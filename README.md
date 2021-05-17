@@ -8,9 +8,8 @@
 
 `npm install --global yarn`
 
-In the project directory, you can run:
-
 ### In the project directory:
 
 `yarn install`
+
 `yarn start`
